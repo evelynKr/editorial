@@ -9,17 +9,8 @@ export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onUserStateChange(user => {
-      console.log(user);
-      setUser(user);
-    });
+    onUserStateChange(setUser);
   }, []);
-  const handleLogin = () => {
-    login().then(setUser);
-  };
-  const handleLogout = () => {
-    logout().then(setUser);
-  };
   return (
     <header className='flex flex-col'>
       <Link
@@ -38,8 +29,8 @@ export default function Navbar() {
           <Link to='/products/new' className='text-2xl flex justify-end'>
             <MdAddToPhotos />
           </Link>
-          {!user && <button onClick={handleLogin}>Log in</button>}
-          {user && <button onClick={handleLogout}>Log out</button>}
+          {!user && <button onClick={login}>Log in</button>}
+          {user && <button onClick={logout}>Log out</button>}
         </div>
       </nav>
     </header>
