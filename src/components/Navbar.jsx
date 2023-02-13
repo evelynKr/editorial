@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdExplicit } from 'react-icons/md';
 import { MdAddToPhotos } from 'react-icons/md';
 import { IoBagHandleOutline } from 'react-icons/io5';
+import { login, logout, onUserStateChange } from './../api/firebase';
 
 export default function Navbar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onUserStateChange(user => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+  const handleLogin = () => {
+    login().then(setUser);
+  };
+  const handleLogout = () => {
+    logout().then(setUser);
+  };
   return (
     <header className='flex flex-col'>
       <Link
@@ -23,7 +38,8 @@ export default function Navbar() {
           <Link to='/products/new' className='text-2xl flex justify-end'>
             <MdAddToPhotos />
           </Link>
-          <button>Log in</button>
+          {!user && <button onClick={handleLogin}>Log in</button>}
+          {user && <button onClick={handleLogout}>Log out</button>}
         </div>
       </nav>
     </header>
