@@ -4,7 +4,7 @@ import { MdExplicit } from 'react-icons/md';
 import { MdAddToPhotos } from 'react-icons/md';
 import { IoBagHandleOutline } from 'react-icons/io5';
 import Button from './ui/Button';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 import User from './User';
 
 export default function Navbar() {
