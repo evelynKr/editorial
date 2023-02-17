@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdExplicit } from 'react-icons/md';
 import { MdAddToPhotos } from 'react-icons/md';
-import { IoBagHandleOutline } from 'react-icons/io5';
 import Button from './ui/Button';
 import { useAuthContext } from '../context/AuthContext';
 import User from './User';
+import CartStatus from './CartStatus';
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className='flex flex-row gap-4 items-center'>
           {user && (
             <Link to='/carts' className='text-2xl flex'>
-              <IoBagHandleOutline />
+              <CartStatus />
             </Link>
           )}
           {user && user.isAdmin && (
