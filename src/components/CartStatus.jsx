@@ -1,16 +1,16 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from '../hooks/useCart';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 export default function CartStatus() {
-  const { uid } = useAuthContext();
-  const { data: products } = useQuery(['carts'], () => getCart(uid));
+  const {
+    cartQuery: { data: products },
+  } = useCart();
   return (
-    <div className='relative text-4xl'>
-      CART
+    <div className='flex relative'>
+      <AiOutlineShoppingCart className='text-3xl' />
       {products && (
-        <p className='w-6 h-6 text-center bg-brand text-white font-bold rounded-full absolute -top-1 -right-2'>
+        <p className='flex place-content-center items-center w-5 h-5 text-center text-sm bg-brand text-white font-bold rounded-full absolute -top-1 -right-2'>
           {products.length}
         </p>
       )}
