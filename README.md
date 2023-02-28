@@ -1,5 +1,7 @@
 
-** 폴더 구조 ** 
+## 폴더 구조
+
+```
 📦editorial
  ┣ 📂.git
  ┃ ┣ 📂hooks
@@ -89,3 +91,4 @@
  ┣ 📜package.json
  ┣ 📜README.md
  ┗ 📜tailwind.config.js
+ ```
